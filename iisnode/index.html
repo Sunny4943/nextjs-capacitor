@@ -1,0 +1,87 @@
+<html>
+<head>
+    <title>iisnode logs</title>
+    <style type="text/css">
+        body
+        {
+            font-family: "Trebuchet MS" , Arial, Helvetica, sans-serif;
+        }
+        table
+        {
+            border-collapse: collapse;
+        }
+        td, th
+        {
+            border: 1px solid lightgray;
+            padding: 3px 7px 2px 7px;
+        }
+        th
+        {
+            text-align: left;
+            padding-top: 5px;
+            padding-bottom: 4px;
+            background-color: Gray;
+            color: #ffffff;
+        }
+        td.stderr
+        {
+            color: Red;
+        }
+    </style>
+</head>
+<body>
+    <table id="logFilesTable">
+        <tr>
+            <th>
+                Computer name
+            </th>
+            <th>
+                PID
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Created
+            </th>
+            <th>
+                Link
+            </th>
+        </tr>
+    </table>
+    <p id="lastUpdated"></p>
+    <script type="text/javascript">
+
+        // this is replaced with actual data at runtime by code in interceptor.js
+        var logFiles = [{"file":"WSERVER94120-3092-stderr-1712744339982.txt","computername":"WSERVER94120","pid":3092,"type":"stderr","created":1712744339982},{"file":"WSERVER94120-3092-stdout-1712744339977.txt","computername":"WSERVER94120","pid":3092,"type":"stdout","created":1712744339977},{"file":"WSERVER94120-3224-stderr-1712746957750.txt","computername":"WSERVER94120","pid":3224,"type":"stderr","created":1712746957750},{"file":"WSERVER94120-3224-stdout-1712746957740.txt","computername":"WSERVER94120","pid":3224,"type":"stdout","created":1712746957740},{"file":"WSERVER94120-3324-stderr-1712745061336.txt","computername":"WSERVER94120","pid":3324,"type":"stderr","created":1712745061336},{"file":"WSERVER94120-3324-stdout-1712745061329.txt","computername":"WSERVER94120","pid":3324,"type":"stdout","created":1712745061329},{"file":"WSERVER94120-3916-stderr-1712744921526.txt","computername":"WSERVER94120","pid":3916,"type":"stderr","created":1712744921526},{"file":"WSERVER94120-3916-stdout-1712744921520.txt","computername":"WSERVER94120","pid":3916,"type":"stdout","created":1712744921520},{"file":"WSERVER94120-4400-stderr-1712744009789.txt","computername":"WSERVER94120","pid":4400,"type":"stderr","created":1712744009789},{"file":"WSERVER94120-4400-stdout-1712744009785.txt","computername":"WSERVER94120","pid":4400,"type":"stdout","created":1712744009785},{"file":"WSERVER94120-4972-stderr-1712743654749.txt","computername":"WSERVER94120","pid":4972,"type":"stderr","created":1712743654749},{"file":"WSERVER94120-4972-stdout-1712743654746.txt","computername":"WSERVER94120","pid":4972,"type":"stdout","created":1712743654746},{"file":"WSERVER94120-5460-stderr-1712745626160.txt","computername":"WSERVER94120","pid":5460,"type":"stderr","created":1712745626160},{"file":"WSERVER94120-5460-stdout-1712745626153.txt","computername":"WSERVER94120","pid":5460,"type":"stdout","created":1712745626153},{"file":"WSERVER94120-6088-stderr-1712807928091.txt","computername":"WSERVER94120","pid":6088,"type":"stderr","created":1712807928091},{"file":"WSERVER94120-6088-stdout-1712807928081.txt","computername":"WSERVER94120","pid":6088,"type":"stdout","created":1712807928081},{"file":"WSERVER94120-6416-stderr-1712745849887.txt","computername":"WSERVER94120","pid":6416,"type":"stderr","created":1712745849887},{"file":"WSERVER94120-6416-stdout-1712745849881.txt","computername":"WSERVER94120","pid":6416,"type":"stdout","created":1712745849881},{"file":"WSERVER94120-8840-stderr-1712745256997.txt","computername":"WSERVER94120","pid":8840,"type":"stderr","created":1712745256997},{"file":"WSERVER94120-8840-stdout-1712745256994.txt","computername":"WSERVER94120","pid":8840,"type":"stdout","created":1712745256994},{"file":"WSERVER94120-8916-stderr-1712743852738.txt","computername":"WSERVER94120","pid":8916,"type":"stderr","created":1712743852738},{"file":"WSERVER94120-8916-stdout-1712743852734.txt","computername":"WSERVER94120","pid":8916,"type":"stdout","created":1712743852734}];
+        var lastUpdated = 1712807929607;
+        var date = new Date();
+
+        date.setTime(lastUpdated);
+        document.getElementById('lastUpdated').innerHTML = 'Index was last updated ' + date;
+
+        logFiles.sort(function (a, b) {
+            return b.created - a.created;
+        });
+
+        var logFilesTable = document.getElementById("logFilesTable");
+        for (var i = 0; i < logFiles.length; i++) {
+            var logFile = logFiles[i];
+            date.setTime(logFile.created);
+            var row = logFilesTable.insertRow(-1);
+            var computerNameCell = row.insertCell(0);
+            var pidCell = row.insertCell(1);
+            var typeCell = row.insertCell(2);
+            var dateCell = row.insertCell(3);
+            var logCell = row.insertCell(4);
+            computerNameCell.innerHTML = logFile.computername;
+            pidCell.innerHTML = logFile.pid.toString();
+            typeCell.innerHTML = logFile.type;
+            typeCell.setAttribute('class', logFile.type);
+            dateCell.innerHTML = date.toString();
+            logCell.innerHTML = '<a href="' + logFile.file + '">log</a>';
+        };
+
+    </script>
+</body>
+</html>
