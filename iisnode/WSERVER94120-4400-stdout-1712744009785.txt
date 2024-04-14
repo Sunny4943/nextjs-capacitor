@@ -1,2 +1,0 @@
-> Ready on http://localhost:\\.\pipe\4aa7fe94-d5dd-4aef-bb77-ac0d522d7c4e
-from middleware KOF803
