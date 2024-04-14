@@ -126,7 +126,7 @@ componentWillUnmount() {
               </div>
 
               <div>
-                <button type="button" className="flex w-full justify-center rounded-md px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" onClick={ ()=>{this.setState({ start:!( this.state.start) })}}> {this.state.start?"Pause":"Play"}</button>
+                <button type="button" className="flex w-full justify-center bg-indigo-600 rounded-md px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" onClick={ ()=>{this.setState({ start:!( this.state.start) })}}> {this.state.start?"Pause":"Play"}</button>
               </div>
             </form>
 
