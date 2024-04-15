@@ -5,7 +5,7 @@
   "webDir": "public",
   "bundledWebRuntime": false,
   "server": {
-    "url": "https://k7b3zsvt-3000.inc1.devtunnels.ms/",
+    "url": "https://nextjs-capacitor-six.vercel.app/",
     "cleartext": true
   }
   
